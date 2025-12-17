@@ -1,0 +1,39 @@
+<!-- For this example, the web page is contained withing the extension.
+     For an actual web based extension, this would be hosted on your server,
+     away from the user's machine. -->
+<html>
+  <head>
+    <style>
+      button {
+       position: fixed;
+       bottom: 10px;
+       right: 10px;
+       z-index: 100;
+      }
+      
+      img {
+        width: 90%;
+        margin: 5%;
+      }
+    </style>
+    <script>
+      
+      // For a real AI render extension you'd feed the screenshot along with a
+      // user prompt into an LLM to generate a new image.
+      // For this example we just do some CSS shenanigan to make it look
+      // different from the SketchUp viewport.
+      function uploadScreenshot(image_data) {
+        var img = document.createElement("img");
+        img.src = "data:image/png;base64, " + image_data;
+        img.style.filter = "hue-rotate(" + Math.random() * 360 + "deg) blur(" + Math.random() * 5 + "px)";
+        document.body.appendChild(img);
+        img.scrollIntoView(false);
+      }
+    </script>
+  </head>
+  <body>
+    <!-- A real extension would typically have some sort of progress spinner
+         as the image wont display instantly. -->
+    <button onclick="sketchup.start_render()">Render</button>
+  </body>
+</html>
