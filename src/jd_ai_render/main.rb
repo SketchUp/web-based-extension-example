@@ -6,12 +6,16 @@ module JanDoe
     def self.show
       @dialog ||= self.create_dialog
 
-      # Action callbacks need to be readded each time the dialog is shown.
-      @dialog.add_action_callback("start_render") { start_render }
-
-      # If the dialog is already visible, trying to show it again brings it to
-      # the front.
-      @dialog.visible? ? @dialog.bring_to_front : @dialog.show
+      if @dialog.visible?
+        # If the dialog is already visible, trying to show it again brings it to
+        # the front.
+        @dialog.bring_to_front
+      else
+        # Action callbacks need to be readded each time the dialog is shown.
+        @dialog.add_action_callback("start_render") { start_render }
+      
+        @dialog.show
+      end
     end
 
     def self.create_dialog
