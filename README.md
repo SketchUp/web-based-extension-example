@@ -2,7 +2,7 @@
 
 A web based SketchUp extension is an extension with a thin Ruby wrapper for
 displaying a web page, while most of the heavy lifting is done on your server.
-A typical example is an AI rendering or energy analysis but it cpuld also be a
+A typical example is an AI rendering or energy analysis but it could also be a
 product catalog or an exporter.
 
 This architecture comes with better protection of your intellectual property
